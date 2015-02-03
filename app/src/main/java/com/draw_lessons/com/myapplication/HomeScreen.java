@@ -5,12 +5,17 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
+
 
 // Pantalla del menú principal desde donde se puede escoger entre
 // abrir nuevo proyecto, recuperar uno existente, entrar en la sección de contenidos
 // o salir de la aplicación.
 
-public class HomeScreen extends ActionBarActivity {
+public class HomeScreen extends ActionBarActivity implements View.OnClickListener{
+
+    ImageButton bt_exit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,7 +24,8 @@ public class HomeScreen extends ActionBarActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home_screen);
 
-
+        bt_exit = (ImageButton) findViewById(R.id.imageView_exit);
+        bt_exit.setOnClickListener(this);
     }
 
 
@@ -43,5 +49,13 @@ public class HomeScreen extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        if(v == bt_exit){
+            finish();
+        }
     }
 }
